@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одностраничный сайт</title>
+    <style>
+        /* Стили для панели навигации */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Стили для разделов страницы */
+        .section {
+            display: none;
+            padding: 30px;
+        }
+
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Панель навигации -->
+<nav>
+    <ul>
+        <li><a href="#home" class="nav-link">Главная</a></li>
+        <li><a href="#about" class="nav-link">Обо мне</a></li>
+        <li><a href="#skills" class="nav-link">Навыки</a></li>
+        <li><a href="#image" class="nav-link">Изображение</a></li>
+    </ul>
+</nav>
+
+<!-- Содержимое страницы -->
+<div id="home" class="section active">
+    <h2>Привет</h2>
+    <p>Я Еламан</p>
+</div>
+
+<div id="about" class="section">
+    <h2>Обо мне</h2>
+    <p>Мне 18 лет</p>
+</div>
+
+<div id="skills" class="section">
+    <h2>Навыки</h2>
+    <p>Я умею бегать и играть</p>
+</div>
+
+<div id="image" class="section">
+    <h2>Изображение</h2>
+<img src="https://avatars.mds.yandex.net/i?id=c34e31b9d6ae2a393490432e0a1bb7486ba07538-11506583-images-thumbs&n=13">
+</div>
+
+<!-- Подключение скрипта -->
+<script>
+    // Получаем все ссылки панели навигации
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Получаем все разделы страницы
+    const sections = document.querySelectorAll('.section');
+
+    // Добавляем обработчик события для каждой ссылки
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Получаем идентификатор раздела, на который ссылается ссылка
+            const targetId = link.getAttribute('href').substring(1);
+
+            // Отображаем целевой раздел, скрывая все остальные
+            sections.forEach(section => {
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
